@@ -403,7 +403,7 @@ document.getElementById("propertySearchForm")?.addEventListener("submit", (e) =>
  * pretend to succeed.
  */
 async function sendLeadToWebhook(payload) {
-  if (!WEBHOOK_URL || WEBHOOK_URL === "YOUR_N8N_WEBHOOK_URL") {
+  if (!WEBHOOK_URL || WEBHOOK_URL === "https://cele-stine.app.n8n.cloud/webhook-test/rockshake-leads") {
     throw new Error("WEBHOOK_NOT_CONFIGURED");
   }
   const response = await fetch(WEBHOOK_URL, {
