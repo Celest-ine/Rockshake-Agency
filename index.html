@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rockshake Agency — Property. People. Possibility.</title>
+<meta name="description" content="Rockshake Agency — exceptional homes to buy and rent across the UK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+    <a href="#top" class="wordmark">Rockshake<span class="wordmark__dot">Agency</span></a>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#buy">Buy</a>
+      <a href="#rent">Rent</a>
+      <a href="#valuation">Sell</a>
+      <a href="#valuation">Valuation</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="masthead__actions">
+      <a href="#viewing" class="btn btn--dark btn--sm">Book a Viewing</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#buy">Buy</a>
+    <a href="#rent">Rent</a>
+    <a href="#valuation">Sell</a>
+    <a href="#valuation">Valuation</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#viewing" class="btn btn--dark">Book a Viewing</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <h1 class="hero__headline">Find a place worth<br>coming home to.</h1>
+        <p class="hero__sub">Discover exceptional homes to buy and rent across the UK with Rockshake Agency.</p>
+        <div class="hero__ctas">
+          <a href="#buy" class="btn btn--dark">View Properties</a>
+          <a href="#viewing" class="btn btn--outline">Book a Viewing</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80" alt="Modern UK townhouse exterior at dusk">
+      </div>
+    </div>
+
+    <!-- Search panel -->
+    <div class="search-panel">
+      <div class="search-panel__toggle" role="tablist" aria-label="Buy or rent">
+        <button class="search-toggle-btn is-active" data-mode="buy" role="tab" aria-selected="true">Buy</button>
+        <button class="search-toggle-btn" data-mode="rent" role="tab" aria-selected="false">Rent</button>
+      </div>
+      <form class="search-panel__form" id="propertySearchForm">
+        <div class="field">
+          <label for="s-location">Location</label>
+          <input type="text" id="s-location" name="location" placeholder="Town, city or postcode">
+        </div>
+        <div class="field">
+          <label for="s-min">Min price</label>
+          <select id="s-min" name="minPrice">
+            <option value="">No min</option>
+            <option value="25000">€25,000</option>
+            <option value="100000">€100,000</option>
+            <option value="500000">€500,000</option>
+            <option value="1000000">€1,000,000</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="s-max">Max price</label>
+          <select id="s-max" name="maxPrice">
+            <option value="">No max</option>
+            <option value="250000">€250,000</option>
+            <option value="750000">€750,000</option>
+            <option value="2000000">€2,000,000</option>
+            <option value="3000000">€3,000,000+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="s-type">Property type</label>
+          <select id="s-type" name="propertyType">
+            <option value="">Any type</option>
+            <option value="apartment">Apartment</option>
+            <option value="house">House</option>
+            <option value="townhouse">Townhouse</option>
+            <option value="luxury">Luxury</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--dark search-panel__submit">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED ============ -->
+  <section class="section" id="featured">
+    <div class="section__head">
+      <h2>Featured Properties</h2>
+      <p>A closer look at homes our team is currently representing.</p>
+    </div>
+    <div class="property-grid property-grid--featured" id="featuredGrid"></div>
+  </section>
+
+  <!-- ============ RENT ============ -->
+  <section class="section section--tint" id="rent">
+    <div class="section__head">
+      <h2>Homes to Rent</h2>
+      <p>From city apartments to grand residences, available across the UK.</p>
+    </div>
+    <div class="property-grid" id="rentGrid"></div>
+  </section>
+
+  <!-- ============ BUY ============ -->
+  <section class="section" id="buy">
+    <div class="section__head">
+      <h2>Properties for Sale</h2>
+      <p>Considered homes for buyers at every stage of the market.</p>
+    </div>
+    <div class="property-grid" id="saleGrid"></div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about" id="about">
+    <div class="about__grid">
+      <div class="about__media">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80" alt="Rockshake Agency team discussing a property">
+      </div>
+      <div class="about__copy">
+        <h2>Property. People. Possibility.</h2>
+        <p>Rockshake Agency helps buyers, renters and property owners navigate the property market with a modern, personal approach. We combine local knowledge with clear communication, so every step — from first viewing to completion — feels considered rather than chaotic.</p>
+        <div class="values">
+          <div class="value">
+            <h3>Expertise</h3>
+            <p>Knowledgeable guidance throughout your property journey.</p>
+          </div>
+          <div class="value">
+            <h3>Transparency</h3>
+            <p>Clear communication without unnecessary complexity.</p>
+          </div>
+          <div class="value">
+            <h3>People First</h3>
+            <p>A property service built around the needs of each client.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY ROCKSHAKE ============ -->
+  <section class="section section--tint why">
+    <div class="section__head">
+      <h2>Why Rockshake</h2>
+    </div>
+    <div class="why__grid">
+      <div class="why__item">
+        <h3>Local Expertise</h3>
+        <p>Knowledge of the markets and neighbourhoods we serve.</p>
+      </div>
+      <div class="why__item">
+        <h3>Personal Service</h3>
+        <p>Every client receives a tailored property experience.</p>
+      </div>
+      <div class="why__item">
+        <h3>Modern Approach</h3>
+        <p>Technology makes the process faster and easier.</p>
+      </div>
+      <div class="why__item">
+        <h3>Responsive Team</h3>
+        <p>We believe property enquiries deserve prompt responses — every enquiry, viewing request and valuation is routed to the right person the moment it arrives.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENQUIRY FORM ============ -->
+  <section class="section form-section" id="enquiry">
+    <div class="section__head">
+      <h2>Make an Enquiry</h2>
+      <p>Tell us what you're looking for and a member of the team will be in touch.</p>
+    </div>
+
+    <form class="lead-form" id="enquiryForm" novalidate>
+      <div class="form-status" id="enquiryStatus" role="status" aria-live="polite"></div>
+
+      <fieldset>
+        <legend>Personal Information</legend>
+        <div class="form-row">
+          <div class="field">
+            <label for="eq-first">First name</label>
+            <input type="text" id="eq-first" name="first_name" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="eq-last">Last name</label>
+            <input type="text" id="eq-last" name="last_name" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="eq-email">Email</label>
+            <input type="email" id="eq-email" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="eq-phone">Phone number</label>
+            <input type="tel" id="eq-phone" name="phone" required autocomplete="tel">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Enquiry Information</legend>
+        <div class="form-row">
+          <div class="field">
+            <label for="eq-property">Property interested in</label>
+            <select id="eq-property" name="property" required>
+              <option value="">Select a property</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="eq-type">Enquiry type</label>
+            <select id="eq-type" name="enquiry_type" required>
+              <option value="">Select an option</option>
+              <option value="general_information">General information</option>
+              <option value="arrange_viewing">Arrange a viewing</option>
+              <option value="offer">Make an offer</option>
+              <option value="mortgage_advice">Mortgage advice</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="eq-message">Message</label>
+          <textarea id="eq-message" name="message" rows="4" required placeholder="Tell us a little about what you're looking for"></textarea>
+        </div>
+        <div class="field">
+          <span class="field__label">Preferred contact method</span>
+          <div class="radio-row">
+            <label class="radio"><input type="radio" name="preferred_contact" value="email" checked> Email</label>
+            <label class="radio"><input type="radio" name="preferred_contact" value="phone"> Phone</label>
+            <label class="radio"><input type="radio" name="preferred_contact" value="sms"> SMS</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn--dark btn--wide">
+        <span class="btn__label">Submit Enquiry</span>
+        <span class="btn__spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+  </section>
+
+  <!-- ============ VIEWING FORM ============ -->
+  <section class="section section--tint form-section" id="viewing">
+    <div class="section__head">
+      <h2>Book a Viewing</h2>
+      <p>Request a time that suits you — we'll confirm availability shortly after.</p>
+    </div>
+
+    <form class="lead-form" id="viewingForm" novalidate>
+      <div class="form-status" id="viewingStatus" role="status" aria-live="polite"></div>
+
+      <fieldset>
+        <legend>Personal Details</legend>
+        <div class="form-row">
+          <div class="field">
+            <label for="vw-first">First name</label>
+            <input type="text" id="vw-first" name="first_name" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="vw-last">Last name</label>
+            <input type="text" id="vw-last" name="last_name" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="vw-email">Email</label>
+            <input type="email" id="vw-email" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="vw-phone">Phone number</label>
+            <input type="tel" id="vw-phone" name="phone" required autocomplete="tel">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Property</legend>
+        <div class="field">
+          <label for="vw-property">Property interested in</label>
+          <select id="vw-property" name="property" required>
+            <option value="">Select a property</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Viewing Preferences</legend>
+        <div class="form-row">
+          <div class="field">
+            <label for="vw-date">Preferred date</label>
+            <input type="date" id="vw-date" name="preferred_date" required>
+          </div>
+          <div class="field">
+            <label for="vw-time">Preferred time</label>
+            <input type="time" id="vw-time" name="preferred_time" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="vw-alt-date">Alternative date</label>
+            <input type="date" id="vw-alt-date" name="alternative_date">
+          </div>
+          <div class="field">
+            <label for="vw-alt-time">Alternative time</label>
+            <input type="time" id="vw-alt-time" name="alternative_time">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contact Preference</legend>
+        <div class="radio-row">
+          <label class="radio"><input type="radio" name="preferred_contact" value="email" checked> Email</label>
+          <label class="radio"><input type="radio" name="preferred_contact" value="phone"> Phone</label>
+          <label class="radio"><input type="radio" name="preferred_contact" value="sms"> SMS</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Additional Information</legend>
+        <div class="field">
+          <label for="vw-message">Message / notes</label>
+          <textarea id="vw-message" name="message" rows="3" placeholder="Anything we should know before the viewing"></textarea>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn--dark btn--wide">
+        <span class="btn__label">Request Viewing</span>
+        <span class="btn__spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+  </section>
+
+  <!-- ============ VALUATION FORM ============ -->
+  <section class="section form-section" id="valuation">
+    <div class="section__head">
+      <h2>What's Your Property Worth?</h2>
+      <p>Get a free property valuation from our experienced team.</p>
+    </div>
+
+    <form class="lead-form" id="valuationForm" novalidate>
+      <div class="form-status" id="valuationStatus" role="status" aria-live="polite"></div>
+
+      <fieldset>
+        <legend>Personal Details</legend>
+        <div class="form-row">
+          <div class="field">
+            <label for="vl-first">First name</label>
+            <input type="text" id="vl-first" name="first_name" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="vl-last">Last name</label>
+            <input type="text" id="vl-last" name="last_name" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="vl-email">Email</label>
+            <input type="email" id="vl-email" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="vl-phone">Phone number</label>
+            <input type="tel" id="vl-phone" name="phone" required autocomplete="tel">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Property Details</legend>
+        <div class="field">
+          <label for="vl-address">Property address</label>
+          <input type="text" id="vl-address" name="property_address" required>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="vl-type">Property type</label>
+            <select id="vl-type" name="property_type" required>
+              <option value="">Select type</option>
+              <option value="apartment">Apartment</option>
+              <option value="terraced">Terraced house</option>
+              <option value="semi_detached">Semi-detached house</option>
+              <option value="detached">Detached house</option>
+              <option value="townhouse">Townhouse</option>
+              <option value="luxury">Luxury residence</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="vl-value">Estimated property value</label>
+            <input type="text" id="vl-value" name="estimated_value" placeholder="e.g. €500,000">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="vl-bed">Number of bedrooms</label>
+            <input type="number" id="vl-bed" name="bedrooms" min="0" required>
+          </div>
+          <div class="field">
+            <label for="vl-bath">Number of bathrooms</label>
+            <input type="number" id="vl-bath" name="bathrooms" min="0" required>
+          </div>
+        </div>
+        <div class="field">
+          <span class="field__label">When are you looking to sell?</span>
+          <div class="radio-row radio-row--wrap">
+            <label class="radio"><input type="radio" name="selling_timeline" value="immediately" checked> Immediately</label>
+            <label class="radio"><input type="radio" name="selling_timeline" value="within_3_months"> Within 3 months</label>
+            <label class="radio"><input type="radio" name="selling_timeline" value="within_6_months"> Within 6 months</label>
+            <label class="radio"><input type="radio" name="selling_timeline" value="within_12_months"> Within 12 months</label>
+            <label class="radio"><input type="radio" name="selling_timeline" value="just_exploring"> Just exploring</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Additional Information</legend>
+        <div class="field">
+          <label for="vl-message">Message / additional details</label>
+          <textarea id="vl-message" name="message" rows="3" placeholder="Anything else that might help our valuation"></textarea>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn--dark btn--wide">
+        <span class="btn__label">Request Free Valuation</span>
+        <span class="btn__spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="contact__grid">
+      <div>
+        <h2>Get in Touch</h2>
+        <p class="contact__lead">Rockshake Agency<br>London, United Kingdom</p>
+        <dl class="contact__details">
+          <div><dt>Phone</dt><dd><a href="tel:+442000000000">+44 20 0000 0000</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:hello@rockshakeagency.com">hello@rockshakeagency.com</a></dd></div>
+        </dl>
+        <p class="contact__demo-note">These are demo contact details for prototype purposes.</p>
+      </div>
+      <div class="contact__hours">
+        <h3>Opening Hours</h3>
+        <dl>
+          <div><dt>Monday – Friday</dt><dd>8:30 AM – 6:00 PM</dd></div>
+          <div><dt>Saturday</dt><dd>9:00 AM – 4:00 PM</dd></div>
+          <div><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ PROPERTY DETAIL MODAL ============ -->
+<div class="modal" id="propertyModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" data-close-modal aria-label="Close">&times;</button>
+    <div class="modal__gallery" id="modalGallery"></div>
+    <div class="modal__body">
+      <p class="modal__location" id="modalLocation"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal__price" id="modalPrice"></p>
+      <ul class="modal__facts" id="modalFacts"></ul>
+      <p class="modal__description" id="modalDescription"></p>
+      <div class="modal__features">
+        <h3>Key Features</h3>
+        <ul id="modalFeatures"></ul>
+      </div>
+      <div class="modal__ctas">
+        <a href="#viewing" class="btn btn--dark" data-modal-viewing>Book a Viewing</a>
+        <a href="#enquiry" class="btn btn--outline" data-modal-enquiry>Make an Enquiry</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <a href="#top" class="wordmark wordmark--light">Rockshake<span class="wordmark__dot">Agency</span></a>
+      <p>&copy; 2026 Rockshake Agency. All rights reserved.</p>
+    </div>
+    <div class="footer__col">
+      <h3>Quick Links</h3>
+      <a href="#buy">Buy</a>
+      <a href="#rent">Rent</a>
+      <a href="#valuation">Sell</a>
+      <a href="#valuation">Valuation</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer__col">
+      <h3>Legal</h3>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+    </div>
+    <div class="footer__col">
+      <h3>Follow</h3>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
